@@ -8,38 +8,38 @@ int LineCount(char file[]);//行数统计函数
 int ComplexCount(char file[]); 
 int main(){//主函数 
 	char input[10],File[200];
-	printf("请输入用户命令：wc.exe-");
-	scanf("%s",&input);
 	while(1){
+	    printf("请输入用户命令：wc.exe-");
+	    scanf("%s",&input);
 	    if(input[0]=='c'){
 		   printf("请输入文件名：");
 	       scanf("%s",&File);
 		   int charcount=0;
 		   charcount=CharCount(File);
-		   printf("文件的字符数为：%d",charcount);
-		   break;	
+		   printf("文件的字符数为：%d\n",charcount);
+		   continue;	
 		}
 	    if(input[0]=='w'){
 			printf("请输入文件名：");
 			scanf("%s",&File); 
 			int wordcount=0;
 		    wordcount=WordCount(File);
-		    printf("文件的词数为：%d",wordcount);
-		    break;	
+		    printf("文件的词数为：%d\n",wordcount);
+		    continue;
 		}
 		if(input[0]=='l'){
 			printf("请输入文件名:");
 			scanf("%s",&File); 
 			int linecount=0;
 		    linecount=LineCount(File);
-		    printf("文件的行数为：%d",linecount);
-		    break;	
+		    printf("文件的行数为：%d\n",linecount);
+		    continue;	
 		}
 		if(input[0]=='a'){
 			printf("请输入文件名：");
 			scanf("%s",&File); 
 		    ComplexCount(File);
-		    break;	
+		    continue;
 		}
 	}
     system("pause");
@@ -80,6 +80,7 @@ int WordCount(char file[]){//单词数统计函数
 			wcount++;
 			mychar=fgetc(pf);
 		}
+		mychar=fgetc(pf);
 	}
 	fclose(pf);
     return wcount;
@@ -110,9 +111,6 @@ int LineCount(char file[]){//行数统计函数
 int ComplexCount(char file[]){
 	FILE *pf=NULL;
 	int spacecount=0;
-	int notecount=0;
-	int codecount=0;
-	int s;
 	pf=fopen(file,"r");
 	if(pf==NULL){
 		printf("寻找文件失败\n");
