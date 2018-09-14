@@ -127,16 +127,13 @@ int ComplexCount(char file[]){
 				spacecount++;
 				mychar=fgetc(pf);
 			}
-			else if(mychar=='}'){
+		}
+		else if(mychar=='}'){
+			mychar=fgetc(pf);
+			if(mychar=='\n'){
+				spacecount++;
 				mychar=fgetc(pf);
-			    if(mychar=='\n'){
-				    spacecount++;
-				    mychar=fgetc(pf);
-			    }
-		    } 
-		//else if(mychar=='}'){
-		
-		//	}
+			}
 		}
 		else mychar=fgetc(pf);
 	}
